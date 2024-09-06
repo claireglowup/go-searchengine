@@ -18,13 +18,12 @@ func LoadDocuments(path string) ([]document, error) {
 	if err != nil {
 		return nil, err
 	}
-
 	defer f.Close()
+
 	gz, err := gzip.NewReader(f)
 	if err != nil {
 		return nil, err
 	}
-
 	defer gz.Close()
 
 	dec := xml.NewDecoder(gz)
